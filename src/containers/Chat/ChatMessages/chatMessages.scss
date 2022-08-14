@@ -1,5 +1,86 @@
 .chat-messages-wrapper {
   height: 100%;
   background-color: #2F2B43;
+  display: flex;
+  flex-direction: column;
   flex: 1;
+  color: #fff;
+  &__header {
+    height: 60px;
+    margin: 10px 20px;
+    border-radius: 10px;
+    background-color: #584E7A;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    position: relative;
+  }
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column-reverse;
+    overflow-y: auto;
+  }
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+    padding: 0 20px;
+  }
+}
+
+.header__profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header__dropdown {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+}
+
+.message-input {
+  width: 85%;
+}
+
+.profile__name {
+  font-size: 1.14rem;
+}
+
+.day-wrapper {
+  &__title {
+    text-align: center;
+    display: block;
+  }
+}
+.messages-wrapper {
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 20px;
+  &__message {
+    max-width: 45%;
+    width: fit-content;
+    background-color: #4D7CFE;
+    padding: 10px 30px 20px 10px;
+    border-radius: 5px;
+    position: relative;
+    &.my {
+      background-color: #EEAB79;
+      align-self: end;
+    }
+  }
+}
+
+.message__meta {
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+  display: flex;
+  gap: 5px;
+  &__date {
+    font-size: 0.71rem;
+  }
 }

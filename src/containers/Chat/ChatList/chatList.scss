@@ -38,12 +38,7 @@
     background-color: #2F2B43;
   }
   &__avatar {
-    width: 45px;
-    height: 45px;
     margin: 15px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    background-color: #393250;
   }
   &__text {
     display: flex;
@@ -70,4 +65,12 @@
     bottom: 6px;
     text-align: center;
   }
+}
+
+.text__content {
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  overflow: hidden;
+  width: 250px;
 }

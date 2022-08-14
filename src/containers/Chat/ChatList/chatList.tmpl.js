@@ -2,12 +2,13 @@ import './chatList.scss'
 import '../../../index.scss'
 import anchor from '../../../components/ui/anchor/anchor'
 import input from '../../../components/ui/input/input'
+import avatar from "../../../components/avatar/avatar";
 
 import plusSvg from '../../../assets/svg/circle-plus.svg'
 
 export default `
-    <div class="chat-list-wrapper">
-        <div class="chat-list-wrapper__header">
+    <aside class="chat-list-wrapper">
+        <header class="chat-list-wrapper__header">
             <div class="header__profile-link">
                 ${anchor({text: 'Профиль'})}
             </div>
@@ -15,11 +16,11 @@ export default `
                 <img src=${plusSvg} alt="create-chat">
                 ${input({name: 'chat-search', placeholder: 'Поиск'})}
             </div>
-        </div>
-        <div class="chat-list-wrapper__content">
+        </header>
+        <main class="chat-list-wrapper__content">
             {{#each chats}}
                 <div class="chat-element {{#if this.selected}}chat-element--selected{{/if}}">
-                    <div class="chat-element__avatar"></div>
+                    ${avatar({classes: 'chat-element__avatar'})}
                     <div class="chat-element__text">
                         <span class="text__name">{{this.name}}</span>
                         <span class="text__content">
@@ -35,6 +36,6 @@ export default `
                     {{/if}}
                 </div>
             {{/each}}
-        </div>
-    </div>
+        </main>
+    </aside>
 `
