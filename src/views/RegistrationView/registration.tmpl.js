@@ -9,7 +9,7 @@ export default `
     <div class="registration-page-wrapper">
         <div class="registration-page-content">
             <span class="registration-page-content__title">Регистрация</span>
-            <div class="registration-page-content__card card">
+            <div class="registration-page-content__card">
                 <form class="registration-form">
                     ${input({ label: 'Почта', name: 'email', withLabel: true})}
                     ${input({ label: 'Логин', name: 'login', withLabel: true})}

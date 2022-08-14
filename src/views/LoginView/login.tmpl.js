@@ -9,7 +9,7 @@ export default `
     <div class="login-page-wrapper">
         <div class="login-page-content">
             <span class="login-page-content__title">Вход</span>
-            <div class="login-page-content__card card">
+            <div class="login-page-content__card">
                 <form class="login-form">
                     ${input({ label: 'Логин', name: 'login', withLabel: true})}
                     ${input({ label: 'Пароль', name: 'password', type: 'password', withLabel: true})}        

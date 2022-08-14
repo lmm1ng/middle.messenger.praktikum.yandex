@@ -1,5 +1,5 @@
 import './avatar.scss'
 
 export default `
-    <div class="avatar {{classes}}"></div>
+    <div class="avatar {{#if big}}avatar--big{{/if}} {{classes}}"></div>
 `

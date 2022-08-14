@@ -1,0 +1,18 @@
+.not-found-wrapper {
+  color: #fff;
+  background-color: #2F2B43;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  &__error {
+    font-weight: bold;
+    font-size: 4rem;
+  }
+  &__subtext {
+    font-size: 2rem;
+  }
+}

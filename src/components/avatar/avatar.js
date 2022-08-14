@@ -1,4 +1,4 @@
 import Handlebars from 'handlebars'
 import template from './avatar.tmpl'
 
-export default ({classes}) => Handlebars.compile(template)({classes})
+export default ({classes, big}) => Handlebars.compile(template)({classes, big})
