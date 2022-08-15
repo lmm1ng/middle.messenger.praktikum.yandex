@@ -4,7 +4,7 @@
 https://www.figma.com/file/KpTgJchrgKP0Q4XyE2NNFX/Messanger
 
 ### Netify: 
-
+https://62fa2c3de60e50374d5dec2a--monumental-cucurucho-76e226.netlify.app/
 
 ### Команды для запуска:
 
