@@ -1,0 +1,22 @@
+body {
+  background-color: #2F2B43;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#root {
+  width: 600px;
+  background-color: #584E7A;
+  height: 500px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 2rem;
+  }
+}

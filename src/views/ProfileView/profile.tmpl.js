@@ -2,7 +2,7 @@ import './profile.scss'
 import '../../index.scss'
 
 import angleSvg from '../../assets/svg/angle-left.svg'
-import penToSquare from '../../assets/svg/pen-to-square.svg'
+import penToSquareSvg from '../../assets/svg/pen-to-square.svg'
 
 import avatar from '../../components/avatar/avatar';
 import button from '../../components/ui/button/button';
@@ -23,7 +23,7 @@ export default `
             </div>
             <div class="content__info">
                 <div class="edit-info-button">
-                    <img src=${penToSquare} alt="">
+                    <img src=${penToSquareSvg} alt="">
                 </div>
                 {{#each infoFields}}
                 <div class="info-field">
