@@ -1,0 +1,11 @@
+.avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background-color: #393250;
+  &--big {
+    width: 70px;
+    height: 70px;
+  }
+}
