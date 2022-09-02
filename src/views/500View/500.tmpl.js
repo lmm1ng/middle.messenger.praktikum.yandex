@@ -1,7 +1,7 @@
-import './500.scss'
-import '../../index.scss'
+import './500.scss';
+import '../../index.scss';
 
-import skullSvg from '../../assets/svg/skull.svg'
+import skullSvg from '../../assets/svg/skull.svg';
 
 export default `
     <div class="server-error-wrapper">
@@ -12,4 +12,4 @@ export default `
         </span>
         <span class="server-error-wrapper__subtext">Не поверите, но уже фиксим...</span>
     </div>
-`
+`;
