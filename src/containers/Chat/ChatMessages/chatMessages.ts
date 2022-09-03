@@ -1,19 +1,13 @@
 import Block from '../../../utlils/block';
 import './chatMessages.scss';
 
-import registerComponent from '../../../utlils/registerComponent';
-import Avatar from '../../../components/avatar';
-import Textarea from '../../../components/ui/textarea';
+import { validateInput } from '../../../utlils/validation';
 
 import dotsSvg from '../../../assets/svg/dots.svg';
 import clipSvg from '../../../assets/svg/paperclip.svg';
 import emojiSvg from '../../../assets/svg/face-smile.svg';
 import planeSvg from '../../../assets/svg/paper-plane.svg';
 import readSvg from '../../../assets/svg/read-message.svg';
-import { validateInput } from '../../../utlils/validation';
-
-registerComponent(Avatar, 'Avatar');
-registerComponent(Textarea, 'Textarea');
 
 interface IMessage {
   day: string,

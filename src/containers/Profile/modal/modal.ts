@@ -1,16 +1,9 @@
 import Block from '../../../utlils/block';
 import './modal.scss';
 
-import registerComponent from '../../../utlils/registerComponent';
-import Button from '../../../components/ui/button';
-import InputLabeled from '../../../components/ui/inputLabeled';
-
 import { validateInput } from '../../../utlils/validation';
 
 import '../../../helpers/ifEquals';
-
-registerComponent(InputLabeled, 'InputLabeled');
-registerComponent(Button, 'Button');
 
 interface IProfileModalProps {
     visible: boolean,
@@ -19,10 +12,10 @@ interface IProfileModalProps {
 
 export default class ProfileModal extends Block {
   constructor({ visible, is }: IProfileModalProps) {
-    const closeModal = () => {
+    const closeModal = (): void => {
       this.setProps({ visible: false });
     };
-    const submit = () => {
+    const submit = (): void => {
       const el = this.getContent();
       const inputs = Array.from(el?.querySelectorAll('input') as NodeList);
       const inputsData: Array<Record<string, string | boolean>> = inputs

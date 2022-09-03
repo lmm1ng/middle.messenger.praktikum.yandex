@@ -1,19 +1,13 @@
 import Block from '../../utlils/block';
 
-import Avatar from '../../components/avatar';
-import Button from '../../components/ui/button';
-import ButtonImage from '../../components/ui/buttonImage';
+import './profile.scss';
+
 import ProfileModal from '../../containers/Profile/modal';
 import registerComponent from '../../utlils/registerComponent';
-
-import './profile.scss';
 
 import angleSvg from '../../assets/svg/angle-left.svg';
 import penToSquareSvg from '../../assets/svg/pen-to-square.svg';
 
-registerComponent(Avatar, 'Avatar');
-registerComponent(Button, 'Button');
-registerComponent(ButtonImage, 'ButtonImage');
 registerComponent(ProfileModal, 'ProfileModal');
 
 interface IField {
@@ -51,7 +45,7 @@ export default class ProfileView extends Block {
     ];
 
     let isChangeInfoModal = false;
-    const openChangeInfoModal = () => {
+    const openChangeInfoModal = (): void => {
       isChangePasswordModal = false;
       isChangeAvatarModal = false;
       isChangeInfoModal = true;
@@ -59,7 +53,7 @@ export default class ProfileView extends Block {
     };
 
     let isChangePasswordModal = false;
-    const openChangePasswordModal = () => {
+    const openChangePasswordModal = (): void => {
       isChangeInfoModal = false;
       isChangeAvatarModal = false;
       isChangePasswordModal = true;
@@ -67,17 +61,17 @@ export default class ProfileView extends Block {
     };
 
     let isChangeAvatarModal = false;
-    const openChangeAvatarModal = () => {
+    const openChangeAvatarModal = (): void => {
       isChangeInfoModal = false;
       isChangePasswordModal = false;
       isChangeAvatarModal = true;
       this.setProps({ isChangeAvatarModal, isChangePasswordModal, isChangeInfoModal });
     };
 
-    const goToChat = () => {
+    const goToChat = (): void => {
       window.location.href = '/chat';
     };
-    const goToLogin = () => {
+    const goToLogin = (): void => {
       window.location.href = '/login';
     };
     super({
@@ -90,8 +84,6 @@ export default class ProfileView extends Block {
       openChangeAvatarModal,
       goToChat,
       goToLogin,
-      penToSquareSvg,
-      angleSvg,
     });
   }
 
@@ -112,7 +104,7 @@ export default class ProfileView extends Block {
             }}}
             <aside class="profile-page-wrapper__aside">
                 {{{ButtonImage
-                    image=angleSvg
+                    image='${angleSvg}'
                     onClick=goToChat
                 }}}
             </aside>    
@@ -128,7 +120,7 @@ export default class ProfileView extends Block {
                 <div class="content__info">
                     <div class="edit-info-button">
                         {{{ButtonImage
-                            image=penToSquareSvg
+                            image='${penToSquareSvg}'
                             onClick=openChangeInfoModal
                         }}}
                     </div>

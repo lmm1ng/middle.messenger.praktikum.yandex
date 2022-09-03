@@ -54,7 +54,6 @@ export default class Block {
         const oldTarget = { ...target };
         target[prop] = value;
 
-        // Запускаем обновление компоненты
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
         return true;
       },
@@ -79,14 +78,14 @@ export default class Block {
     return { props, children };
   }
 
-  _addEvents() {
+  _addEvents(): void {
     const { events = {} } = this.props as { events: Record<string, () => void>};
     Object.keys(events).forEach((eventName) => {
       this._element!.addEventListener(eventName, events[eventName]);
     });
   }
 
-  _registerEvents(eventBus: EventBus) {
+  _registerEvents(eventBus: EventBus): void {
     eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
@@ -110,11 +109,7 @@ export default class Block {
 
   componentDidMount() {}
 
-  // public dispatchComponentDidMount() {
-  //   this.eventBus().emit(Block.EVENTS.FLOW_CDM);
-  // }
-
-  private _componentDidUpdate(oldProps: any, newProps: any) {
+  private _componentDidUpdate(oldProps: any, newProps: any): void {
     if (this.componentDidUpdate(oldProps, newProps)) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
@@ -123,11 +118,11 @@ export default class Block {
   // sry about that
   // @ts-ignore
   //  eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars
-  protected componentDidUpdate(oldProps: any, newProps: any) {
+  protected componentDidUpdate(oldProps: any, newProps: any): boolean {
     return true;
   }
 
-  setProps = (nextProps: any) => {
+  setProps = (nextProps: any): void => {
     if (!nextProps) {
       return;
     }

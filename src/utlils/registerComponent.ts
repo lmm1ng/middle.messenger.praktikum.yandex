@@ -1,7 +1,7 @@
 import * as Handlebars from 'handlebars';
 import Block from './block';
 
-export default function registerComponent(Component: typeof Block, name: string) {
+export default function registerComponent(Component: typeof Block, name: string): void {
   Handlebars.registerHelper(name, ({ hash, data, fn }: Handlebars.HelperOptions) => {
     if (!data.root.children) {
       data.root.children = {};

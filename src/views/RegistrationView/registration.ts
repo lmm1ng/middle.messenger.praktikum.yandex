@@ -1,20 +1,11 @@
 import Block from '../../utlils/block';
 import './registration.scss';
 
-import registerComponent from '../../utlils/registerComponent';
-import Anchor from '../../components/ui/anchor';
-import Button from '../../components/ui/button';
-import InputLabeled from '../../components/ui/inputLabeled';
-
 import { validateInput } from '../../utlils/validation';
-
-registerComponent(InputLabeled, 'InputLabeled');
-registerComponent(Anchor, 'Anchor');
-registerComponent(Button, 'Button');
 
 export default class RegistrationView extends Block {
   constructor() {
-    const submit = () => {
+    const submit = (): void => {
       const el = this.getContent();
       const inputs = Array.from(el?.querySelectorAll('input') as NodeList);
       const inputsData: Array<Record<string, string | boolean>> = inputs

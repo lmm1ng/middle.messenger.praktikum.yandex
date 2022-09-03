@@ -2,18 +2,7 @@ import Block from '../../../utlils/block';
 import './chatList.scss';
 import '../../../index.scss';
 
-import registerComponent from '../../../utlils/registerComponent';
-import Anchor from '../../../components/ui/anchor';
-import Button from '../../../components/ui/button';
-import InputLabeled from '../../../components/ui/inputLabeled';
-import Avatar from '../../../components/avatar';
-
 import plusSvg from '../../../assets/svg/circle-plus.svg';
-
-registerComponent(InputLabeled, 'InputLabeled');
-registerComponent(Anchor, 'Anchor');
-registerComponent(Button, 'Button');
-registerComponent(Avatar, 'Avatar');
 
 interface IChat {
   name: string,
