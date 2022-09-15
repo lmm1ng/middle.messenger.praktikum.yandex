@@ -3,6 +3,9 @@
   border-radius: 5px;
   padding: 0.6rem;
   width: 100%;
+  &.invalid {
+    border: 1px solid red;
+  }
   &:focus {
     outline: none;
   }
