@@ -1,4 +1,5 @@
 import Block from '../../../utlils/block';
+import './buttonImage.scss';
 
 interface IButtonImageProps {
   image: string,
@@ -12,7 +13,7 @@ export default class ButtonImage extends Block {
 
   render() {
     return `
-        <img src="{{image}}" alt="">
+        <img class="button-image" src="{{image}}" alt="">
     `;
   }
 }

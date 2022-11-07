@@ -18,7 +18,8 @@ interface IInputLabeledProps {
   label?: string,
   placeholder?: string,
   onBlur?: () => void,
-  onFocus?: () => void
+  onFocus?: () => void,
+  onInput?: () => void,
 }
 
 export default class InputLabeled extends Block {
@@ -41,6 +42,7 @@ export default class InputLabeled extends Block {
                 placeholder=../placeholder
                 onBlur=../onBlur
                 onFocus=../onFocus
+                onInput=../onInput
             }}}
         </div>
         {{/notEquals}}
@@ -50,12 +52,6 @@ export default class InputLabeled extends Block {
                 <img src=${fileArrow} alt="">
                 <span>Загрузить</span>
             </label>
-            {{{Input
-                name=name
-                type='file'
-                onBlur=onBlur
-                onFocus=onFocus
-            }}}
             <input id="{{../name}}" type="file" name="{{../name}}">
         </div>
         {{/ifEquals}}

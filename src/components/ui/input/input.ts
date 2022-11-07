@@ -5,14 +5,15 @@ interface IInputProps {
   type?: string,
   placeholder: string,
   onBlur?: () => void,
-  onFocus?: () => void
+  onFocus?: () => void,
+  onInput?: () => void
 }
 
 export default class Input extends Block {
   constructor({
-    onBlur, onFocus, ...props
+    onBlur, onFocus, onInput, ...props
   }: IInputProps) {
-    super({ ...props, events: { blur: onBlur, focus: onFocus } });
+    super({ ...props, events: { blur: onBlur, focus: onFocus, input: onInput } });
   }
 
   render() {

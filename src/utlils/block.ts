@@ -39,6 +39,7 @@ export default class Block {
   }
 
   getContent(): HTMLElement | null {
+    this.eventBus().emit(Block.EVENTS.FLOW_CDM);
     return this.element;
   }
 
@@ -54,7 +55,9 @@ export default class Block {
         const oldTarget = { ...target };
         target[prop] = value;
 
-        self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
+        if (JSON.stringify(oldTarget[prop]) !== JSON.stringify(value)) {
+          self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
+        }
         return true;
       },
       deleteProperty() {
@@ -86,7 +89,7 @@ export default class Block {
   }
 
   _registerEvents(eventBus: EventBus): void {
-    eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
+    eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
@@ -99,9 +102,12 @@ export default class Block {
     });
   }
 
-  protected init(): void {
+  private _init() {
+    this.init();
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
+
+  protected init() {}
 
   _componentDidMount(): void {
     this.componentDidMount();

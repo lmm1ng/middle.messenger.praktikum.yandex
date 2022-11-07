@@ -1,3 +1,4 @@
 import LoginView from './login';
+import { withRouter } from '../../utlils/router';
 
-export default LoginView;
+export default withRouter(LoginView);

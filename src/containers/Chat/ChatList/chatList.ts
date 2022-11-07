@@ -1,116 +1,86 @@
 import Block from '../../../utlils/block';
 import './chatList.scss';
-import '../../../index.scss';
+// import '../../../index.scss';
 
 import plusSvg from '../../../assets/svg/circle-plus.svg';
 
-interface IChat {
-  name: string,
-  selected: boolean,
-  unreadCount: number,
-  lastMessage: {
-    text: string,
-    isMy: boolean,
-    date: string
-  }
-}
+import Chat from './Chat';
+import registerComponent from '../../../utlils/registerComponent';
+import ChatsController from '../../../controllers/ChatsController';
+
+registerComponent(Chat, 'Chat');
 
 export default class ChatList extends Block {
   constructor() {
-    const chats: Array<IChat> = [
-      {
-        name: 'Андрей',
-        selected: false,
-        unreadCount: 1,
-        lastMessage: {
-          text: 'С учётом сложившейся международной обстановки, существующая теория',
-          isMy: false,
-          date: '10:00',
-        },
-      },
-      {
-        name: 'Витя',
-        selected: true,
-        unreadCount: 0,
-        lastMessage: {
-          text: 'Да уж',
-          isMy: true,
-          date: '07:20',
-        },
-      },
-      {
-        name: 'Дима',
-        selected: false,
-        unreadCount: 0,
-        lastMessage: {
-          text: 'Здарова',
-          isMy: false,
-          date: 'Пт',
-        },
-      },
-      {
-        name: 'Саня',
-        selected: false,
-        unreadCount: 0,
-        lastMessage: {
-          text: 'Когда сотку вернешь?',
-          isMy: true,
-          date: '1 Мая 2022',
-        },
-      },
-      {
-        name: 'Яндекс',
-        selected: false,
-        unreadCount: 0,
-        lastMessage: {
-          text: 'Го оффер?',
-          isMy: false,
-          date: '1 Апреля 2022',
-        },
-      },
-    ];
-    super({ chats });
+    const changeCreateChatModalVisibility = () => {
+      this.setProps({ isCreateChatModal: !this.props.isCreateChatModal });
+    };
+
+    const onChatClick = (chatId: number) => {
+      ChatsController.selectChat(chatId);
+    };
+
+    let inputValue = '';
+    const onInput = (e: InputEvent) => {
+      inputValue = ((e.target as HTMLInputElement).value);
+    };
+
+    // It is impossible to create dynamic input in our realisation, so let's go filter by click
+    const searchChats = () => {
+      ChatsController.getChats(inputValue);
+      inputValue = '';
+    };
+
+    super({
+      changeCreateChatModalVisibility,
+      onChatClick,
+      onInput,
+      searchChats,
+    });
   }
 
   render() {
     return `
     <aside class="chat-list-wrapper">
+        {{{Modal
+            is='create-chat'
+            visible=isCreateChatModal
+            onClose=changeCreateChatModalVisibility
+        }}}
         <header class="chat-list-wrapper__header">
             <div class="header__profile-link">
                 {{{Anchor
                     text='Профиль'
-                    href='/profile'
+                    href='/settings'
                 }}}
             </div>
             <div class="header__chats-panel">
-                <img src=${plusSvg} alt="create-chat">
+                {{{ButtonImage
+                    image='${plusSvg}'
+                    onClick=changeCreateChatModalVisibility
+                }}}
                 {{{InputLabeled
                     name='chat-search'
-                    placeholder='Поиск'
+                    onInput=onInput
+                    placeholder='Название чата'
+                }}}
+                {{{Button
+                  text='Поиск'
+                  type='minor'
+                  onClick=searchChats
                 }}}
             </div>
         </header>
         <main class="chat-list-wrapper__content">
-            {{#each chats}}
-                <div class="chat-element {{#if this.selected}}chat-element--selected{{/if}}">
-                    {{{Avatar
-                        classes='chat-element__avatar'
+            <div class="scroll-container">
+                {{#each chats}}
+                    {{{Chat
+                        chat=this
+                        selectedChatId=../selectedChatId
+                        onClick=../onChatClick
                     }}}
-                    <div class="chat-element__text">
-                        <span class="text__name">{{this.name}}</span>
-                        <span class="text__content">
-                            {{#if this.lastMessage.isMy}}
-                            <span class="text__content--my">Вы:</span>
-                            {{/if}}
-                            {{this.lastMessage.text}}
-                        </span>
-                    </div>
-                    <span class="chat-element__time">{{this.lastMessage.date}}</span>
-                    {{#if this.unreadCount}}
-                    <span class="chat-element__unread-count">{{this.unreadCount}}</span>
-                    {{/if}}
-                </div>
             {{/each}}
+            </div>
         </main>
     </aside>
 `;
