@@ -22,7 +22,10 @@ export default class ChatView extends Block {
           this.props.router.go('/');
         });
     }
-    ChatsController.getChats();
+    ChatsController.getChats()
+      .catch((e) => {
+        console.log(e.reason || 'Error');
+      });
   }
 
   render() {

@@ -9,9 +9,10 @@ class UsersController {
   }
 
   findUsers(login: string) {
-    this.api.getUsers(login).then((response) => {
-      store.set('findedUsers', response);
-    });
+    return this.api.getUsers(login)
+      .then((response) => {
+        store.set('findedUsers', response);
+      });
   }
 
   changeUserAvatar(avatar: File) {

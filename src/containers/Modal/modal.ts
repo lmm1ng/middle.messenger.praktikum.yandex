@@ -30,6 +30,9 @@ export default class Modal extends Block {
         ChatsController.createChat(data as unknown as ICreateChatData)
           .then(() => {
             closeModal();
+          })
+          .catch((e) => {
+            console.log(e.reason || 'Error');
           });
       }
     };
@@ -37,7 +40,10 @@ export default class Modal extends Block {
     let findUsersInput = '';
 
     const findUsers = () => {
-      UsersController.findUsers(findUsersInput);
+      UsersController.findUsers(findUsersInput)
+        .catch((e) => {
+          console.log(e.reason || 'Error');
+        });
     };
 
     const onFindUsersInput = (e: InputEvent) => {
@@ -51,7 +57,10 @@ export default class Modal extends Block {
         .split(' ')[1].match(/\d+/g);
       if (idArr?.length) {
         ChatsController.addUserToChat(Number(idArr[0]))
-          .then(() => closeModal());
+          .then(() => closeModal())
+          .catch((e) => {
+            console.log(e.reason || 'Error');
+          });
       }
     };
 
@@ -62,27 +71,39 @@ export default class Modal extends Block {
         .split(' ')[1].match(/\d+/g);
       if (idArr?.length) {
         ChatsController.deleteUserFromChat(Number(idArr[0]))
-          .then(() => closeModal());
+          .then(() => closeModal())
+          .catch((e) => {
+            console.log(e.reason || 'Error');
+          });
       }
     };
 
     const changeChatAvatar = () => {
       const { avatar } = collectInputsData();
       ChatsController.changeChatAvatar(avatar as unknown as File)
-        .then(() => closeModal());
+        .then(() => closeModal())
+        .catch((e) => {
+          console.log(e.reason || 'Error');
+        });
     };
 
     const changeUserAvatar = () => {
       const { avatar } = collectInputsData();
       UsersController.changeUserAvatar(avatar as unknown as File)
-        .then(() => closeModal());
+        .then(() => closeModal())
+        .catch((e) => {
+          console.log(e.reason || 'Error');
+        });
     };
 
     const changeProfileInfo = () => {
       const data = collectInputsData();
       if (Object.keys(data).length) {
         UsersController.changeUserInfo(data as unknown as IChangeUserInfoData)
-          .then(() => closeModal());
+          .then(() => closeModal())
+          .catch((e) => {
+            console.log(e.reason || 'Error');
+          });
       }
     };
 
@@ -93,7 +114,11 @@ export default class Modal extends Block {
           UsersController.changePassword({
             oldPassword: data.oldPassword as string,
             newPassword: data.newPassword as string,
-          }).then(() => closeModal());
+          })
+            .then(() => closeModal())
+            .catch((e) => {
+              console.log(e.reason || 'Error');
+            });
         }
       }
     };

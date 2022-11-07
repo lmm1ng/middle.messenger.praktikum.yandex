@@ -1,5 +1,9 @@
 import HTTPTransport from '../utlils/httpTransport';
 
+export interface IError {
+  reason: string
+}
+
 export default abstract class BaseApi {
   protected http: HTTPTransport;
 

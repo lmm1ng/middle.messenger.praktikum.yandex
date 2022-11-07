@@ -27,7 +27,10 @@ export default class ChatList extends Block {
 
     // It is impossible to create dynamic input in our realisation, so let's go filter by click
     const searchChats = () => {
-      ChatsController.getChats(inputValue);
+      ChatsController.getChats(inputValue)
+        .catch((e) => {
+          console.log(e.reason || 'Error');
+        });
       inputValue = '';
     };
 

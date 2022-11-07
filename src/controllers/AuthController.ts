@@ -39,8 +39,7 @@ class AuthController {
   }
 
   logout() {
-    this.api.logout()
-      .catch();
+    return this.api.logout();
   }
 }
 

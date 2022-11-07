@@ -23,7 +23,7 @@ interface IChatSetting {
 }
 
 export default class ChatMessages extends Block {
-  constructor(props: any) {
+  constructor() {
     const changeDropdownVisibility = () => {
       this.setProps({ isSettingsDropdown: !this.props.isSettingsDropdown });
     };
@@ -52,10 +52,14 @@ export default class ChatMessages extends Block {
         text: 'Удалить пользователя',
         danger: false,
         onClick: () => {
-          ChatsController.getChatUsers().then(() => {
-            changeDropdownVisibility();
-            changeDeleteModalVisibility();
-          });
+          ChatsController.getChatUsers()
+            .then(() => {
+              changeDropdownVisibility();
+              changeDeleteModalVisibility();
+            })
+            .catch((e) => {
+              console.log(e.reason || 'Error');
+            });
         },
       },
       {
@@ -70,9 +74,13 @@ export default class ChatMessages extends Block {
         text: 'Удалить чат',
         danger: true,
         onClick: () => {
-          ChatsController.deleteChat().then(() => {
-            changeDropdownVisibility();
-          });
+          ChatsController.deleteChat()
+            .then(() => {
+              changeDropdownVisibility();
+            })
+            .catch((e) => {
+              console.log(e.reason || 'Error');
+            });
         },
       },
     ];
@@ -87,7 +95,6 @@ export default class ChatMessages extends Block {
       }
     };
     super({
-      ...props,
       validateInput,
       changeDropdownVisibility,
       changeAddUserModalVisibility,
