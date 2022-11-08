@@ -6,6 +6,8 @@
     "dev": "webpack serve --mode=development --progress",
     "build": "rimraf dist && webpack",
     "start": "rimraf dist && webpack && node ./server.js",
+    "lint": "stylelint '**/*{.css,.scss}'",
+    "lint:fix": "stylelint '**/*{.css,.scss}' --fix",
     "test": "mocha"
   },
   "author": "",
@@ -29,7 +31,7 @@
     "sass": "^1.56.0",
     "sass-loader": "^13.1.0",
     "stylelint": "^14.11.0",
-    "stylelint-scss": "^4.3.0",
+    "stylelint-config-standard": "^29.0.0",
     "ts-loader": "^9.4.1",
     "typescript": "^4.8.2",
     "util": "^0.12.5",

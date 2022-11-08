@@ -5,19 +5,24 @@
   border: none;
   width: 100%;
   cursor: pointer;
+
   &:focus {
     outline: none;
   }
+
   &--primary {
-    background-color: #EEAB79;
+    background-color: #eeab79;
+
     &:active {
       background-color: #e68e4c;
     }
   }
+
   &--minor {
-    background-color: #4D7CFE;
+    background-color: #4d7cfe;
   }
+
   &--danger {
-    background-color: #FF7A66;
+    background-color: #ff7a66;
   }
 }
