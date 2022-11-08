@@ -9,7 +9,8 @@ enum METHOD {
 interface IOptions {
     method?: string,
     data?: any,
-    timeout?: number
+    timeout?: number,
+    isFormData?: boolean
 }
 
 const queryStringify = (data: Array<any>): string => {
@@ -31,35 +32,62 @@ const queryStringify = (data: Array<any>): string => {
 };
 
 export default class HTTPTransport {
-  get(url: string, options: IOptions = {}): Promise<XMLHttpRequest> {
+  static API_URL = 'https://ya-praktikum.tech/api/v2';
+
+  protected endpoint: string;
+
+  constructor(endpoint: string) {
+    this.endpoint = `${HTTPTransport.API_URL}${endpoint}`;
+  }
+
+  get<Response>(url: string, options: IOptions = {}): Promise<Response> {
     return this.request(
-      `${url}?${queryStringify(options.data)}`,
+      `${this.endpoint + url}?${queryStringify(options.data)}`,
       { ...options, method: METHOD.GET },
       options.timeout,
     );
   }
 
-  post(url: string, options: IOptions = {}): Promise<XMLHttpRequest> {
-    return this.request(url, { ...options, method: METHOD.POST }, options.timeout);
+  post<Response = void>(url: string, options: IOptions = {}): Promise<Response> {
+    return this.request(this.endpoint + url, { ...options, method: METHOD.POST }, options.timeout);
   }
 
-  put(url: string, options: IOptions = {}): Promise<XMLHttpRequest> {
-    return this.request(url, { ...options, method: METHOD.PUT }, options.timeout);
+  put<Response = void>(url: string, options: IOptions = {}): Promise<Response> {
+    return this.request(this.endpoint + url, { ...options, method: METHOD.PUT }, options.timeout);
   }
 
-  delete(url: string, options: IOptions = {}): Promise<XMLHttpRequest> {
-    return this.request(url, { ...options, method: METHOD.DELETE }, options.timeout);
+  delete<Response>(url: string, options: IOptions = {}): Promise<Response> {
+    return this.request(
+      this.endpoint + url,
+      { ...options, method: METHOD.DELETE },
+      options.timeout,
+    );
   }
 
-  request(url: string, options: IOptions, timeout = 5000): Promise<XMLHttpRequest> {
+  request<Response>(url: string, options: IOptions, timeout = 5000): Promise<Response> {
     const { method = '', data } = options;
 
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       xhr.timeout = timeout;
       xhr.open(method, url);
-      xhr.onload = function () {
-        resolve(xhr);
+
+      if (options.isFormData) {
+        // xhr.setRequestHeader('Content-Type', 'multipart/form-data');
+      } else {
+        xhr.setRequestHeader('Content-Type', 'application/json');
+      }
+      xhr.responseType = 'json';
+      xhr.withCredentials = true;
+
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status < 400) {
+            resolve(xhr.response);
+          } else {
+            reject(xhr.response);
+          }
+        }
       };
 
       xhr.onabort = reject;
@@ -69,7 +97,7 @@ export default class HTTPTransport {
       if (method === METHOD.GET || !data) {
         xhr.send();
       } else {
-        xhr.send(data);
+        xhr.send(options.isFormData ? data : JSON.stringify(data));
       }
     });
   }

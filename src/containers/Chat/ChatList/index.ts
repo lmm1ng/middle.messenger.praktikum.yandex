@@ -1,3 +1,7 @@
 import ChatList from './chatList';
+import { withStore } from '../../../utlils/store';
+import { withRouter } from '../../../utlils/router';
 
-export default ChatList;
+const withChatsStore = withStore((state) => ({ chats: state.chats, selectedChatId: state.selectedChatId }));
+
+export default withRouter(withChatsStore(ChatList));

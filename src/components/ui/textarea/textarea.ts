@@ -5,14 +5,15 @@ interface ITextareaProps {
     name: string,
     rows: number,
     onBlur?: () => void,
-    onFocus?: () => void
+    onFocus?: () => void,
+    onInput?: () => void
 }
 
 export default class Textarea extends Block {
   constructor({
-    onBlur, onFocus, ...props
+    onBlur, onFocus, onInput, ...props
   }: ITextareaProps) {
-    super({ ...props, events: { blur: onBlur, focus: onFocus } });
+    super({ ...props, events: { blur: onBlur, focus: onFocus, input: onInput } });
   }
 
   render() {

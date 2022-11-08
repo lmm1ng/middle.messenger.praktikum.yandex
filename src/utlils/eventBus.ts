@@ -13,14 +13,14 @@ export default class EventBus {
 
   off(event: string, callback: Callback): void {
     if (!this.listeners[event]) {
-      throw new Error(`Нет события ${event}`);
+      return;
     }
     this.listeners[event] = this.listeners[event].filter((listener) => listener !== callback);
   }
 
   emit(event: string, ...args: Array<unknown>): void {
     if (!this.listeners[event]) {
-      throw new Error(`Нет события ${event}`);
+      return;
     }
     this.listeners[event].forEach((listener) => {
       listener(...args);

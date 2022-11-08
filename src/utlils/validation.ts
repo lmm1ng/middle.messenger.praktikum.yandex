@@ -8,18 +8,13 @@ export const validate = (type: string, value: string): boolean => {
     case 'email':
       return /\w+@\w+\.\w+/g.test(value);
     case 'password':
-    case 'repeat-password':
     case 'oldPassword':
     case 'newPassword':
-    case 'repeatNewPassword':
       return /^(?=.*\d)^(?=.*[A-Z]).{8,40}/g.test(value);
     case 'phone':
       return /^\+?\d{10,15}$/g.test(value);
-    case 'message':
-    case 'display_name':
-      return Boolean(value.trim());
     default:
-      return false;
+      return true;
   }
 };
 
