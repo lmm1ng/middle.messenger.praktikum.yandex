@@ -3,8 +3,8 @@
 ### Макет:
 https://www.figma.com/file/KpTgJchrgKP0Q4XyE2NNFX/Messanger
 
-### Netify: 
-https://monumental-cucurucho-76e226.netlify.app/
+### Heroku: 
+https://cryptic-falls-52760.herokuapp.com/
 
 ### Команды для запуска:
 
@@ -13,3 +13,5 @@ https://monumental-cucurucho-76e226.netlify.app/
 Запуск в режиме разработки: npm run dev
 
 Локальный запуск: npm run start
+
+Тесты: npm run test
