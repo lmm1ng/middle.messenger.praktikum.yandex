@@ -1,8 +1,11 @@
 html {
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 14px;
 }
-html, body, #root {
+
+html,
+body,
+#root {
   margin: 0;
   padding: 0;
   height: 100vh;
@@ -10,5 +13,5 @@ html, body, #root {
 }
 
 .error {
-  color: #FFF
+  color: #fff;
 }

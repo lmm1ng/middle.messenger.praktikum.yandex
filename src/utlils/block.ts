@@ -14,7 +14,7 @@ export default class Block {
 
   private _element: HTMLElement | null = null;
 
-  protected props: any;
+  props: any;
 
   public children: Record<string, Block>;
 

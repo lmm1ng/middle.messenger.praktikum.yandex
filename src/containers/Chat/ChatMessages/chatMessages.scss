@@ -1,26 +1,29 @@
 .chat-messages-wrapper {
   height: 100%;
-  background-color: #2F2B43;
+  background-color: #2f2b43;
   display: flex;
   flex-direction: column;
   flex: 1;
   color: #fff;
+
   &__header {
     height: 60px;
     margin: 10px 20px;
     border-radius: 10px;
-    background-color: #584E7A;
+    background-color: #584e7a;
     display: flex;
     justify-content: center;
     align-content: center;
     position: relative;
   }
+
   &__content {
     flex: 1;
     display: flex;
     flex-direction: column-reverse;
     overflow-y: auto;
   }
+
   &__footer {
     display: flex;
     justify-content: space-between;
@@ -40,6 +43,7 @@
   position: absolute;
   right: 16px;
   top: 16px;
+
   .settings-dropdown {
     position: absolute;
     z-index: 9999;
@@ -47,13 +51,15 @@
     right: -20px;
     top: 60px;
     width: 200px;
-    background-color: #584E7A;
+    background-color: #584e7a;
     padding: 10px;
     border-radius: 10px;
+
     &--visible {
       display: flex;
       flex-direction: column;
       gap: 10px;
+
       & > *:last-child {
         margin-top: 10px;
       }
@@ -74,17 +80,19 @@
   flex-direction: column-reverse;
   padding: 20px;
   gap: 10px;
+
   &__message {
     min-width: 200px;
     max-width: 45%;
     width: fit-content;
-    background-color: #4D7CFE;
+    background-color: #4d7cfe;
     padding: 10px 30px 20px 10px;
     border-radius: 5px;
     position: relative;
     word-break: break-all;
+
     &.my {
-      background-color: #EEAB79;
+      background-color: #eeab79;
       align-self: end;
     }
   }
@@ -96,6 +104,7 @@
   bottom: 5px;
   display: flex;
   gap: 5px;
+
   &__date {
     font-size: 0.71rem;
   }

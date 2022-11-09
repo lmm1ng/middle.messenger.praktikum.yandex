@@ -39,7 +39,10 @@ class AuthController {
   }
 
   logout() {
-    return this.api.logout();
+    return this.api.logout()
+      .catch((e) => {
+        console.log(e.reason || 'Error');
+      });
   }
 }
 

@@ -169,7 +169,7 @@ export default class Modal extends Block {
             <div class="modal {{#if ../visible}}active{{/if}}">
               <div class="modal__content">
                 <span class="modal__title">Создать чат</span>
-                <form class="content__form">
+                <form class="content__form" onsubmit="return false">
                     {{{InputLabeled
                         name='title'
                         label='Имя чата'
@@ -266,7 +266,7 @@ export default class Modal extends Block {
             <div class="modal {{#if ../visible}}active{{/if}}">
               <div class="modal__content">
                 <span class="modal__title">Изменить аватар</span>
-                <form class="content__form">
+                <form class="content__form" onsubmit="return false">
                     {{{InputLabeled
                         name='avatar'
                         type='file'
@@ -291,7 +291,7 @@ export default class Modal extends Block {
             <div class="modal {{#if ../visible}}active{{/if}}">
               <div class="modal__content">
                 <span class="modal__title">Изменить аватар</span>
-                <form class="content__form">
+                <form class="content__form" onsubmit="return false">
                     {{{InputLabeled
                         name='avatar'
                         type='file'
@@ -316,7 +316,7 @@ export default class Modal extends Block {
           <div class="modal {{#if ../visible}}active{{/if}}">
             <div class="modal__content">
               <span class="modal__title">Изменить данные профиля</span>
-              <form class="content__form">
+              <form class="content__form" onsubmit="return false">
                   {{{InputLabeled
                       name='email'
                       label='Почта'
@@ -385,7 +385,7 @@ export default class Modal extends Block {
         <div class="modal {{#if ../visible}}active{{/if}}">
             <div class="modal__content">
               <span class="modal__title">Изменить пароль</span>
-              <form class="content__form">
+              <form class="content__form" onsubmit="return false">
                   {{{InputLabeled
                     name='oldPassword'
                     label='Старый пароль'

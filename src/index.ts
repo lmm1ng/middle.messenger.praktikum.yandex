@@ -14,6 +14,8 @@ import Textarea from './components/ui/textarea';
 import ButtonImage from './components/ui/buttonImage';
 import Router from './utlils/router';
 
+import './index.scss';
+
 import Modal from './containers/Modal';
 
 const registerKitComponents = (): void => {

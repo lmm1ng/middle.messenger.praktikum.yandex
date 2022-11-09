@@ -32,12 +32,13 @@ const queryStringify = (data: Array<any>): string => {
 };
 
 export default class HTTPTransport {
-  static API_URL = 'https://ya-praktikum.tech/api/v2';
+  protected API_URL: string;
 
   protected endpoint: string;
 
-  constructor(endpoint: string) {
-    this.endpoint = `${HTTPTransport.API_URL}${endpoint}`;
+  constructor(endpoint: string, apiUrl?: string) {
+    this.API_URL = apiUrl || 'https://ya-praktikum.tech/api/v2';
+    this.endpoint = `${this.API_URL}${endpoint}`;
   }
 
   get<Response>(url: string, options: IOptions = {}): Promise<Response> {

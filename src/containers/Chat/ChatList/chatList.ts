@@ -1,6 +1,5 @@
 import Block from '../../../utlils/block';
 import './chatList.scss';
-// import '../../../index.scss';
 
 import plusSvg from '../../../assets/svg/circle-plus.svg';
 

@@ -34,7 +34,7 @@ export default class InputLabeled extends Block {
         {{#notEquals type "file"}}
         <div class="input">
             {{#if ../withLabel}}
-            <label for="{{../../name}}" class="input__name">{{../../label}}</label>
+            <label for="{{../name}}" class="input__name">{{../label}}</label>
             {{/if}}
             {{{Input
                 name=../name
